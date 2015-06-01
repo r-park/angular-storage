@@ -1,0 +1,36 @@
+{
+  "name": "angular-storage",
+  "version": "0.1.0",
+  "description": "AngularJS web storage adaptor",
+  "homepage": "https://github.com/r-park/angular-storage",
+  "repository": "https://github.com/r-park/angular-storage.git",
+  "author": "Richard Park",
+  "license": "MIT",
+
+  "main": "./dist/angular-storage.min.js",
+
+  "ignore": [
+    "**/.*",
+    "coverage",
+    "gulpfile.js",
+    "karma.conf.js",
+    "node_modules",
+    "package.json",
+    "src",
+    "tmp"
+  ],
+
+  "keywords": [
+    "angular",
+    "angularjs",
+    "localstorage",
+    "sessionstorage",
+    "storage"
+  ],
+
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ]
+}
