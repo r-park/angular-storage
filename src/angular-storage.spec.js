@@ -1,6 +1,6 @@
 describe("Angular storage", function(){
 
-  var localStorageMock,
+  var localStorageStub,
       $localStorage;
 
   var testKey,
@@ -12,12 +12,12 @@ describe("Angular storage", function(){
   beforeEach(function(){
     angular.mock.module('angular-storage', function($provide){
       $provide.constant('$window', {
-        localStorage: new StorageMock()
+        localStorage: new StorageStub()
       });
     });
 
     inject(function(_$window_, _$localStorage_) {
-      localStorageMock = _$window_.localStorage;
+      localStorageStub = _$window_.localStorage;
       $localStorage = _$localStorage_;
     });
 
@@ -30,36 +30,33 @@ describe("Angular storage", function(){
 
   describe("Putting primitive values into localStorage", function(){
     it("should call localStorage.setItem() with provided key and value", function(){
-      sinon.spy(localStorageMock, 'setItem');
+      sinon.spy(localStorageStub, 'setItem');
 
       $localStorage.put(testKey, testValue);
 
-      expect(localStorageMock.setItem.calledWith(testKey, testValue)).toBe(true);
+      expect(localStorageStub.setItem.calledWith(testKey, testValue)).toBe(true);
     });
   });
 
 
   describe("Putting objects into localStorage", function(){
     it("should call localStorage.setItem() with provided key and serialized object", function(){
-      sinon.spy(localStorageMock, 'setItem');
+      sinon.spy(localStorageStub, 'setItem');
 
       $localStorage.putObject(testKey, testObject);
 
-      expect(localStorageMock.setItem.calledWith(testKey, serializedTestObject)).toBe(true);
+      expect(localStorageStub.setItem.calledWith(testKey, serializedTestObject)).toBe(true);
     });
   });
 
 
   describe("Getting primitive values from localStorage", function(){
     it("should call localStorage.getItem() with provided key", function(){
-      sinon
-        .stub(localStorageMock, 'getItem')
-        .returns(testValue);
+      sinon.spy(localStorageStub, 'getItem');
 
-      var value = $localStorage.get(testKey);
+      $localStorage.get(testKey);
 
-      expect(localStorageMock.getItem.calledWith(testKey)).toBe(true);
-      expect(value).toBe(testValue);
+      expect(localStorageStub.getItem.calledWith(testKey)).toBe(true);
     });
   });
 
@@ -67,54 +64,45 @@ describe("Angular storage", function(){
   describe("Getting objects from localStorage", function(){
     it("should call localStorage.getItem() with provided key", function(){
       sinon
-        .stub(localStorageMock, 'getItem')
+        .stub(localStorageStub, 'getItem')
         .returns(serializedTestObject);
 
       $localStorage.getObject(testKey);
 
-      expect(localStorageMock.getItem.calledWith(testKey)).toBe(true);
-    });
-
-
-    it("should return deserialized object", function(){
-      sinon
-        .stub(localStorageMock, 'getItem')
-        .returns(serializedTestObject);
-
-      expect($localStorage.getObject(testKey)).toEqual(testObject);
+      expect(localStorageStub.getItem.calledWith(testKey)).toBe(true);
     });
   });
 
 
   describe("Removing data from localStorage", function(){
     it("should call localStorage.removeItem() with provided key", function(){
-      sinon.spy(localStorageMock, 'removeItem');
+      sinon.spy(localStorageStub, 'removeItem');
 
       $localStorage.remove(testKey);
 
-      expect(localStorageMock.removeItem.calledWith(testKey)).toBe(true);
+      expect(localStorageStub.removeItem.calledWith(testKey)).toBe(true);
     });
   });
 
 
   describe("Clearing all data from localStorage", function(){
     it("should call localStorage.clear()", function(){
-      sinon.spy(localStorageMock, 'clear');
+      sinon.spy(localStorageStub, 'clear');
 
       $localStorage.clear();
 
-      expect(localStorageMock.clear.calledOnce).toBe(true);
+      expect(localStorageStub.clear.calledOnce).toBe(true);
     });
   });
 
 
   describe("Getting keys from localStorage", function(){
     it("should call localStorage.key()", function(){
-      sinon.spy(localStorageMock, 'key');
+      sinon.spy(localStorageStub, 'key');
 
       $localStorage.keys();
 
-      expect(localStorageMock.key.callCount).toBe(localStorageMock.length);
+      expect(localStorageStub.key.callCount).toBe(localStorageStub.length);
     });
   });
 

@@ -30,7 +30,7 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'src/angular-storage.js',
-      'src/storage.mock.js',
+      'src/storage.stub.js',
       'src/angular-storage.spec.js',
       'src/angular-storage.integration.spec.js'
     ],
