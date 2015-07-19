@@ -121,6 +121,18 @@ function StorageService($window, storageType) {
 
 
     /**
+     * Get the key at provided `index`.
+     * Returns null if `index` is out of range.
+     *
+     * @param {number} index - zero-based
+     * @returns {string|null}
+     */
+    key : function(index) {
+      return storage.key(index);
+    },
+
+
+    /**
      * @returns {Array.<string>}
      */
     keys : function() {
