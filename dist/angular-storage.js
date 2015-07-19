@@ -1,4 +1,4 @@
-/* angular.storage v0.1.0 - 2015-06-01T23:01:35.730Z - https://github.com/r-park/angular-storage */
+/* angular-storage v0.2.0 - 2015-07-19T20:12:18.101Z - https://github.com/r-park/angular-storage */
 (function(angular){
 'use strict';
 
@@ -119,6 +119,18 @@ function StorageService($window, storageType) {
     clear : function() {
       storage.clear();
       return this;
+    },
+
+
+    /**
+     * Get the key at provided `index`.
+     * Returns null if `index` is out of range.
+     *
+     * @param {number} index - zero-based
+     * @returns {string|null}
+     */
+    key : function(index) {
+      return storage.key(index);
     },
 
 

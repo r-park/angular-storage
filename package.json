@@ -1,19 +1,16 @@
 {
   "name": "angular-storage",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "AngularJS web storage adaptor",
   "homepage": "https://github.com/r-park/angular-storage",
   "repository": "https://github.com/r-park/angular-storage.git",
   "author": "Richard Park",
   "license": "MIT",
-
   "main": "./dist/angular-storage.js",
-
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --coverage",
     "coveralls": "gulp coveralls && rm -rf ./tmp"
   },
-
   "devDependencies": {
     "angular": "^1.4.0",
     "angular-mocks": "^1.4.0",
@@ -37,7 +34,6 @@
     "karma-safari-launcher": "^0.1.1",
     "sinon": "^1.14.1"
   },
-
   "keywords": [
     "angular",
     "angularjs",
