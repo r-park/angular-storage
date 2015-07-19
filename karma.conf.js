@@ -16,7 +16,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome'],
+    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome', 'Firefox'],
 
 
     // frameworks to use
@@ -26,11 +26,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/sinon/pkg/sinon.js',
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'src/angular-storage.js',
-      'src/angular-storage.spec.js'
+      'node_modules/sinon/pkg/sinon.js',
+      //'src/angular-storage.js',
+      //'src/angular-storage.spec.js'
+      'src/*.js',
+      'test/*.js'
     ],
 
 
