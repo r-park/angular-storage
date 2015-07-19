@@ -1,4 +1,4 @@
-/* angular-storage v0.2.0 - 2015-07-19T20:12:18.101Z - https://github.com/r-park/angular-storage */
+/* angular-storage v0.2.2 - 2015-07-19T20:44:08.046Z - https://github.com/r-park/angular-storage */
 (function(angular){
 'use strict';
 
