@@ -1,4 +1,4 @@
-describe("Angular storage", function(){
+describe('Angular storage', function(){
 
   var localStorageStub,
       $localStorage,
@@ -13,7 +13,7 @@ describe("Angular storage", function(){
       // Firefox will not allow sinon to spy on
       // window.localStorage so we stub it here.
       $provide.constant('$window', {
-        localStorage: new LocalStorageStub()
+        localStorage: new LocalStorageStub() // eslint-disable-line no-undef
       });
     });
 
@@ -29,8 +29,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Putting primitive values into localStorage", function(){
-    it("should call localStorage.setItem() with provided key and value", function(){
+  describe('Putting primitive values into localStorage', function(){
+    it('should call localStorage.setItem() with provided key and value', function(){
       sinon.spy(localStorageStub, 'setItem');
 
       $localStorage.put(testKey, testValue);
@@ -40,8 +40,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Putting objects into localStorage", function(){
-    it("should call localStorage.setItem() with provided key and serialized object", function(){
+  describe('Putting objects into localStorage', function(){
+    it('should call localStorage.setItem() with provided key and serialized object', function(){
       sinon.spy(localStorageStub, 'setItem');
 
       $localStorage.putObject(testKey, testObject);
@@ -51,8 +51,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Getting primitive values from localStorage", function(){
-    it("should call localStorage.getItem() with provided key", function(){
+  describe('Getting primitive values from localStorage', function(){
+    it('should call localStorage.getItem() with provided key', function(){
       sinon.spy(localStorageStub, 'getItem');
 
       $localStorage.get(testKey);
@@ -62,8 +62,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Getting objects from localStorage", function(){
-    it("should call localStorage.getItem() with provided key", function(){
+  describe('Getting objects from localStorage', function(){
+    it('should call localStorage.getItem() with provided key', function(){
       sinon
         .stub(localStorageStub, 'getItem')
         .returns(serializedTestObject);
@@ -75,8 +75,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Removing data from localStorage", function(){
-    it("should call localStorage.removeItem() with provided key", function(){
+  describe('Removing data from localStorage', function(){
+    it('should call localStorage.removeItem() with provided key', function(){
       sinon.spy(localStorageStub, 'removeItem');
 
       $localStorage.remove(testKey);
@@ -86,8 +86,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Clearing all data from localStorage", function(){
-    it("should call localStorage.clear()", function(){
+  describe('Clearing all data from localStorage', function(){
+    it('should call localStorage.clear()', function(){
       sinon.spy(localStorageStub, 'clear');
 
       $localStorage.clear();
@@ -97,8 +97,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Getting a single key from localStorage", function(){
-    it("should call localStorage.key()", function(){
+  describe('Getting a single key from localStorage', function(){
+    it('should call localStorage.key()', function(){
       sinon.spy(localStorageStub, 'key');
 
       $localStorage.key(0);
@@ -108,8 +108,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Getting keys from localStorage", function(){
-    it("should call localStorage.key()", function(){
+  describe('Getting keys from localStorage', function(){
+    it('should call localStorage.key()', function(){
       sinon.spy(localStorageStub, 'key');
 
       $localStorage.keys();
@@ -119,8 +119,8 @@ describe("Angular storage", function(){
   });
 
 
-  describe("Getting the number of items in localStorage", function(){
-    it("should", function(){
+  describe('Getting the number of items in localStorage', function(){
+    it('should', function(){
       expect($localStorage.length()).toBe(2);
     });
   });

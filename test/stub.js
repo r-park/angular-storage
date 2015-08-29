@@ -9,7 +9,7 @@
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Storage
  *
  */
-function LocalStorageStub() {
+function LocalStorageStub() { // eslint-disable-line no-unused-vars
 
   this.getItem = function(){};
 

@@ -1,4 +1,4 @@
-describe("Angular storage integration", function(){
+describe('Angular storage integration', function(){
 
   var localStorage,
       $localStorage,
@@ -29,8 +29,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Putting primitive values into localStorage", function(){
-    it("should store values as strings", function(){
+  describe('Putting primitive values into localStorage', function(){
+    it('should store values as strings', function(){
       var inputs = [1, true, 'foo'],
           outputs = ['1', 'true', 'foo'],
           i = 0,
@@ -47,8 +47,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Putting objects into localStorage", function(){
-    it("should store serialized object", function(){
+  describe('Putting objects into localStorage', function(){
+    it('should store serialized object', function(){
       $localStorage.putObject(testKey1, testObject);
 
       expect(localStorage.length).toBe(1);
@@ -57,8 +57,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Getting primitive values from localStorage", function(){
-    it("should return value associated with provided key", function(){
+  describe('Getting primitive values from localStorage', function(){
+    it('should return value associated with provided key', function(){
       localStorage.setItem(testKey1, testValue1);
 
       expect($localStorage.get(testKey1)).toBe(testValue1);
@@ -66,8 +66,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Getting objects from localStorage", function(){
-    it("should return deserialized object associated with provided key", function(){
+  describe('Getting objects from localStorage', function(){
+    it('should return deserialized object associated with provided key', function(){
       localStorage.setItem(testKey1, JSON.stringify(testObject));
 
       expect($localStorage.getObject(testKey1)).toEqual(testObject);
@@ -75,8 +75,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Removing data from localStorage", function(){
-    it("should remove provided key and associated value", function(){
+  describe('Removing data from localStorage', function(){
+    it('should remove provided key and associated value', function(){
       localStorage.setItem(testKey1, testValue1);
       localStorage.setItem('foo', 'bar');
 
@@ -90,8 +90,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Clearing all data from localStorage", function(){
-    it("should remove all keys and their associated values", function(){
+  describe('Clearing all data from localStorage', function(){
+    it('should remove all keys and their associated values', function(){
       localStorage.setItem(testKey1, testValue1);
       localStorage.setItem(testKey2, testValue2);
 
@@ -104,20 +104,20 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Getting a key from localStorage", function(){
-    it("should return the key at provided index", function(){
+  describe('Getting a key from localStorage', function(){
+    it('should return the key at provided index', function(){
       localStorage.setItem(testKey1, testValue1);
       expect($localStorage.key(0)).toBe(testKey1);
     });
 
-    it("should return null if there is no key at provided index", function(){
+    it('should return null if there is no key at provided index', function(){
       expect($localStorage.key(0)).toBe(null);
     });
   });
 
 
-  describe("Getting keys from localStorage", function(){
-    it("should return an array of keys", function(){
+  describe('Getting keys from localStorage', function(){
+    it('should return an array of keys', function(){
       localStorage.setItem(testKey1, testValue1);
       localStorage.setItem(testKey2, testValue2);
 
@@ -130,8 +130,8 @@ describe("Angular storage integration", function(){
   });
 
 
-  describe("Getting the number of items in localStorage", function(){
-    it("should return a number", function(){
+  describe('Getting the number of items in localStorage', function(){
+    it('should return a number', function(){
       localStorage.setItem(testKey1, testValue1);
       localStorage.setItem(testKey2, testValue2);
 
