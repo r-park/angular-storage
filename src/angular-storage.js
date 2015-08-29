@@ -128,7 +128,12 @@ function StorageService($window, storageType) {
      * @returns {string|null}
      */
     key : function(index) {
-      return storage.key(index);
+      try {
+        return storage.key(index);
+      }
+      catch(error) {
+        return null;
+      }
     },
 
 
