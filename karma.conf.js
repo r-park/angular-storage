@@ -1,22 +1,8 @@
 module.exports = function(config) {
-
   var options = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '.',
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
-
-
-    // Continuous Integration mode: if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
-
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome', 'Firefox'],
 
 
     // frameworks to use
@@ -29,8 +15,6 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/sinon/pkg/sinon.js',
-      //'src/angular-storage.js',
-      //'src/angular-storage.spec.js'
       'src/*.js',
       'test/*.js'
     ],
@@ -47,6 +31,7 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['dots'],
 
 
@@ -60,14 +45,38 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: 'INFO'
+    logLevel: config.LOG_INFO,
+
+
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
+
+
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: false,
+
+
+    // custom launcher for travis-ci
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+
+
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: process.env.TRAVIS ? ['Chrome_travis_ci'] : ['Chrome']
 
   };
 
 
   // additional options for coverage
   if (process.argv.indexOf('--coverage') !== -1) {
-    options.preprocessors['src/angular-storage.js'] = 'coverage';
+    options.singleRun = true;
+    options.preprocessors['src/**/*.js'] = 'coverage';
     options.reporters.push('coverage');
     options.coverageReporter = {
       type : 'lcov',
