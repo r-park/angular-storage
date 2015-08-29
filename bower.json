@@ -9,7 +9,6 @@
   "main": "./dist/angular-storage.min.js",
   "ignore": [
     "**/.*",
-    "coverage",
     "gulpfile.js",
     "karma.conf.js",
     "node_modules",
